@@ -28,10 +28,7 @@ def timestamp():
 def is_image_broken(filePath):
     try:
         image = Image.open(filePath)
-        if image is None:
-            return True
-        else:
-            return False
+        return False
     except Exception as ex:
         return True
 
