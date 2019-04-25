@@ -32,7 +32,7 @@ model.compile(loss='binary_crossentropy',
               metrics=['acc'])
 
 #Create data generators
-train_dir = '/home/pakedziora/src/lavalamp-recognizer/data/train'
+train_dir = 'data/train'
 train_imagegenerator = ImageDataGenerator(
     rescale=1./255,
     rotation_range=20,
@@ -48,7 +48,7 @@ train_generator = train_imagegenerator.flow_from_directory(
         batch_size=32,
         class_mode='binary')
 
-validation_dir = '/home/pakedziora/src/lavalamp-recognizer/data/validation'
+validation_dir = 'data/validation'
 validation_imagegenerator = ImageDataGenerator(rescale=1./255)
 validation_generator = validation_imagegenerator.flow_from_directory(
         validation_dir,
@@ -63,14 +63,14 @@ callbacks_list = [checkpoint]
 history = model.fit_generator(
       train_generator,
       steps_per_epoch=100,
-      epochs=10,
+      epochs=2,
       validation_data=validation_generator,
       validation_steps=50,
       callbacks=callbacks_list,
       workers=8)
 
 #test model
-test_dir = '/home/pakedziora/src/lavalamp-recognizer/data/test'
+test_dir = 'data/test'
 test_imagegenerator = ImageDataGenerator(rescale=1./255)
 test_generator = test_imagegenerator.flow_from_directory(
         test_dir,

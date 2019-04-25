@@ -7,9 +7,9 @@ from functions import *
 IMAGE_SIZE=300
 
 setTensorFlowSession()
-model = load_model('/home/pakedziora/src/lavalamp-recognizer/lavalamp_model.h5')
+model = load_model('lavalamp_model.h5')
 
-test_dir = '/home/pakedziora/src/lavalamp-recognizer/data/test'
+test_dir = 'data/test'
 test_imagegenerator = ImageDataGenerator(rescale=1./255)
 test_generator = test_imagegenerator.flow_from_directory(
         test_dir,
