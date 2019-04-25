@@ -4,10 +4,12 @@ from keras import models
 from keras import optimizers
 from keras.preprocessing.image import ImageDataGenerator
 from keras.callbacks import ModelCheckpoint
+from functions import *
 
 MODEL_FILENAME = 'lavalamp_model.h5'
 IMAGE_SIZE = 300
 
+setTensorFlowSession()
 conv_base = VGG16(weights='imagenet',
                   include_top=False,
                   input_shape=(IMAGE_SIZE, IMAGE_SIZE, 3))
@@ -30,7 +32,7 @@ model.compile(loss='binary_crossentropy',
               metrics=['acc'])
 
 #Create data generators
-train_dir = '/home/pakedziora/src/islavalamp/data/train'
+train_dir = '/home/pakedziora/src/lavalamp-recognizer/data/train'
 train_imagegenerator = ImageDataGenerator(
     rescale=1./255,
     rotation_range=20,
@@ -46,7 +48,7 @@ train_generator = train_imagegenerator.flow_from_directory(
         batch_size=32,
         class_mode='binary')
 
-validation_dir = '/home/pakedziora/src/islavalamp/data/validation'
+validation_dir = '/home/pakedziora/src/lavalamp-recognizer/data/validation'
 validation_imagegenerator = ImageDataGenerator(rescale=1./255)
 validation_generator = validation_imagegenerator.flow_from_directory(
         validation_dir,
@@ -68,7 +70,7 @@ history = model.fit_generator(
       workers=8)
 
 #test model
-test_dir = '/home/pakedziora/src/islavalamp/data/test'
+test_dir = '/home/pakedziora/src/lavalamp-recognizer/data/test'
 test_imagegenerator = ImageDataGenerator(rescale=1./255)
 test_generator = test_imagegenerator.flow_from_directory(
         test_dir,
