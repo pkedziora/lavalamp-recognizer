@@ -24,10 +24,11 @@ sampleCount = len(filenames)
 test_loss, test_acc = model.evaluate_generator(test_generator, steps=sampleCount)
 result = model.predict_generator(test_generator, steps=sampleCount, verbose = 1)
 
-roundedResults = np.round(result).astype(int)
+roundedResults = list(map(lambda r: r[0], np.round(result).astype(int)))
+classMap = {v: k for k, v in test_generator.class_indices.items()}
 
 for i, valResult in np.ndenumerate(roundedResults):
     if valResult != test_generator.classes[i[0]]:
-        print(f"{test_generator.filenames[i[0]]} should be of class {test_generator.classes[i[0]]} but was {roundedResults[i[0]]}")
+        print(f"{test_generator.filenames[i[0]]} should be of class {classMap[test_generator.classes[i[0]]]} but was {classMap[roundedResults[i[0]]]}")
 
 print('test acc:', test_acc)

@@ -35,7 +35,7 @@ model.compile(loss='binary_crossentropy',
 train_dir = 'data/train'
 train_imagegenerator = ImageDataGenerator(
     rescale=1./255,
-    rotation_range=20,
+    rotation_range=30,
     width_shift_range=0.1,
     height_shift_range=0.1,
     shear_range=0.1,
@@ -45,7 +45,7 @@ train_imagegenerator = ImageDataGenerator(
 train_generator = train_imagegenerator.flow_from_directory(
         train_dir,
         target_size=(IMAGE_SIZE, IMAGE_SIZE),
-        batch_size=32,
+        batch_size=16,
         class_mode='binary')
 
 validation_dir = 'data/validation'
@@ -62,7 +62,7 @@ callbacks_list = [checkpoint]
 #train model
 history = model.fit_generator(
       train_generator,
-      steps_per_epoch=100,
+      steps_per_epoch=200,
       epochs=100,
       validation_data=validation_generator,
       validation_steps=50,
