@@ -1,2 +1,13 @@
-<h1>Is it a lava lamp?</h1>
-<h1>Answer is: {{'Yes' if islavalamp else 'No'}}!</h1>
+{% if isPost %}
+    <p>
+        Current image:<br/>
+        <img height="200px" src="{{base64Image}}" />
+    </p>
+    <h1>Is it a lava lamp?</h1>
+    <h1>Answer is: {{'Yes' if islavalamp else 'No'}}!</h1>
+{% endif %}
+
+<form action="/" method="POST" enctype = "multipart/form-data">
+    <input type="file" name="imageUpload"/>
+    <input type="submit" value="Submit"/>
+</form>
