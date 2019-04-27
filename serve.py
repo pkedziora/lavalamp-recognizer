@@ -13,7 +13,7 @@ def getBase64ImageString(filePath):
 
 def normalizeImage(filePath):
     image=Image.open(filePath)
-    if (image._getexif() is not None):
+    if ("_getexif" in dir(image) and image._getexif() is not None):
         exif=dict((ExifTags.TAGS[k], v) for k, v in image._getexif().items() if k in ExifTags.TAGS)
         if "Orientation" in exif:
             if exif["Orientation"] == 3 : 
@@ -23,10 +23,11 @@ def normalizeImage(filePath):
             elif exif["Orientation"] == 8 : 
                 image=image.rotate(90, expand=True)
 
-    image.save(filePath, format="JPEG")
+    image.convert('RGB').save(filePath, format="JPEG")
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/assets', static_folder='web_app/assets', template_folder='web_app/templates')
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 class LavaLampViewModel:
     base64Image = ""
@@ -54,4 +55,4 @@ def hello():
     return render_template("index.html", model = model)
  
 if __name__ == "__main__":
-    app.run(debug = False)
+    app.run(host= '0.0.0.0', debug = False)

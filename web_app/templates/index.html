@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="assets/styles.css" >
+    </head>
+    <body>
+        <h1>Is it a lava lamp?</h1>
+        <form id="uploadForm" action="/" method="POST" enctype = "multipart/form-data">
+            <p>
+                <input class="hide" type="file" id="imageUpload" name="imageUpload" />
+                <input class="uploadImageButton" type="button" id="openFileDialog" value="Upload image"/>
+            </p>
+        </form>
+        {% if request.method == 'POST' %}
+            <p>
+                <img style="max-height:300px; max-width: 100%" src="{{model.base64Image}}" />
+            </p>
+            <div class="answer">{{'Yes' if model.islavalamp else 'No'}}!</div>
+            <div class="stats">
+                <p>
+                    Exact prediction: {{model.probability}}<br/>
+                    (0 - Not lava lamp, 1 - Lava lamp)
+                </p>
+            </div>
+        {% endif %}
+
+        <script>
+            (function() {
+                document.getElementById("openFileDialog").onclick = function(){
+                    document.getElementById("imageUpload").click();
+                };
+                
+                document.getElementById("imageUpload").onchange = function() 
+                {
+                    document.getElementById("uploadForm").submit();
+                };
+            })();
+        </script>
+    </body>
+</html>
