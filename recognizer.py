@@ -4,7 +4,7 @@ from keras.preprocessing import image
 import numpy as np
 from functions import *
 
-#setTensorFlowSession()
+setTensorFlowSession()
 IMAGE_SIZE = 300
 
 model = load_model('lavalamp_model.h5')

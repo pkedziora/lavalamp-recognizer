@@ -4,7 +4,6 @@ from recognizer import *
 import base64
 import os
 from PIL import Image, ExifTags
-from io import BytesIO
 
 def getBase64ImageString(filePath):
     prefix = "data:image/jpeg;charset=utf-8;base64,";
@@ -14,13 +13,16 @@ def getBase64ImageString(filePath):
 
 def normalizeImage(filePath):
     image=Image.open(filePath)
-    exif=dict((ExifTags.TAGS[k], v) for k, v in image._getexif().items() if k in ExifTags.TAGS)
-    if exif["Orientation"] == 3 : 
-        image=image.rotate(180, expand=True)
-    elif exif["Orientation"] == 6 : 
-        image=image.rotate(270, expand=True)
-    elif exif["Orientation"] == 8 : 
-        image=image.rotate(90, expand=True)
+    if (image._getexif() is not None):
+        exif=dict((ExifTags.TAGS[k], v) for k, v in image._getexif().items() if k in ExifTags.TAGS)
+        if "Orientation" in exif:
+            if exif["Orientation"] == 3 : 
+                image=image.rotate(180, expand=True)
+            elif exif["Orientation"] == 6 : 
+                image=image.rotate(270, expand=True)
+            elif exif["Orientation"] == 8 : 
+                image=image.rotate(90, expand=True)
+
     image.save(filePath, format="JPEG")
 
 
