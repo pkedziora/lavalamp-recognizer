@@ -28,22 +28,30 @@ def normalizeImage(filePath):
 
 app = Flask(__name__)
 
+class LavaLampViewModel:
+    base64Image = ""
+    probability = 0
+    islavalamp = False
+
+    def __init__(self, base64Image = "", probability = 0):
+        self.base64Image = base64Image
+        self.probability = probability
+        self.islavalamp = round(probability) == 1
+
 @app.route("/", methods = ['POST', 'GET'])
 def hello():
     filePath = ""
-    base64Image = ""
-    islavalamp = False
-    # if request.method == 'POST':
-    #     filePath = request.form['imagePath']
+    model = LavaLampViewModel()
     if request.method == 'POST':
         imageUpload = request.files['imageUpload']
         filePath = f"{secure_filename(imageUpload.filename)}";
         imageUpload.save(filePath)
         normalizeImage(filePath)
-        base64Image = getBase64ImageString(filePath)
-        islavalamp = recognize(filePath)
+        base64 = getBase64ImageString(filePath);
+        probability = recognize(filePath);
+        model = LavaLampViewModel(base64, probability)
         os.remove(filePath)
-    return render_template("index.html", isPost=request.method == 'POST', islavalamp = islavalamp == 1, base64Image = base64Image)
+    return render_template("index.html", model = model)
  
 if __name__ == "__main__":
     app.run(debug = False)

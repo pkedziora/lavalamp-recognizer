@@ -19,5 +19,5 @@ def recognize(img_path):
     img_tensor /= 255.
     with graph.as_default():
         result = model.predict(img_tensor);
-    roundedResult = np.round(result).astype(int)[0][0]
-    return np.asscalar(roundedResult)
+
+    return np.asscalar(result[0][0])
