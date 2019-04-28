@@ -1,5 +1,5 @@
 api_keys/
-state.json
+state*.json
 data/
 *.h5
 

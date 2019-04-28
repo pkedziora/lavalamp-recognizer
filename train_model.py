@@ -6,7 +6,7 @@ from keras.preprocessing.image import ImageDataGenerator
 from keras.callbacks import ModelCheckpoint
 from functions import *
 
-MODEL_FILENAME = 'lavalamp_model.h5'
+MODEL_FILENAME = 'lavalamp_model_currrent2.h5'
 IMAGE_SIZE = 300
 
 setTensorFlowSession()
@@ -45,7 +45,7 @@ train_imagegenerator = ImageDataGenerator(
 train_generator = train_imagegenerator.flow_from_directory(
         train_dir,
         target_size=(IMAGE_SIZE, IMAGE_SIZE),
-        batch_size=16,
+        batch_size=10,
         class_mode='binary')
 
 validation_dir = 'data/validation'
@@ -62,11 +62,12 @@ callbacks_list = [checkpoint]
 #train model
 history = model.fit_generator(
       train_generator,
-      steps_per_epoch=200,
+      steps_per_epoch=1320,
       epochs=100,
       validation_data=validation_generator,
-      validation_steps=50,
+      validation_steps=320,
       callbacks=callbacks_list,
+      class_weight = {0:1, 1:3},
       workers=8)
 
 #test model
@@ -78,5 +79,5 @@ test_generator = test_imagegenerator.flow_from_directory(
         batch_size=10,
         class_mode='binary')
 
-test_loss, test_acc = model.evaluate_generator(test_generator, steps=50)
+test_loss, test_acc = model.evaluate_generator(test_generator, steps=320, verbose=1)
 print('test accuracy:', test_acc)
