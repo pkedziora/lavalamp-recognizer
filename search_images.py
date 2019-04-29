@@ -4,11 +4,19 @@ import json
 import urllib.parse
 from PIL import Image, ImageFilter
 from time import gmtime, strftime
+import argparse
 
-term = "lava+lamp"
-includeRelatedTerms = False
+parser = argparse.ArgumentParser()
+parser.add_argument("term", help="Image search term")
+parser.add_argument("count", help= "Maximum number of results to return")
+parser.add_argument("-r", "--includeRelated", choices=[0, 1], type=int, help="Include related terms")
+args = parser.parse_args()
+
+term = urllib.parse.quote_plus(args.term)
+includeRelatedTerms = bool(args.includeRelated)
 outputPath = "data/temp"
-resultsLimit = 1000
+resultsLimit = int(args.count)
+
 
 API_URL = "https://api.cognitive.microsoft.com/bing/v7.0/images/search"
 API_KEY_PATH = "api_keys/bing_search.txt"
