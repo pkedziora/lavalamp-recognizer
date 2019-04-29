@@ -1,13 +1,10 @@
-import sys
-
-if len(sys.argv) < 2:
-    print(f"Missing image name")
-    quit()
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument("filePath", help="Path to the image")
+args = parser.parse_args()
 
 from recognizer import *
 
-filePath = sys.argv[1]
-
-islavalamp = recognize(filePath)
+islavalamp = recognize(args.filePath)
 
 print(islavalamp)
