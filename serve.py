@@ -23,7 +23,12 @@ def normalizeImage(filePath):
             elif exif["Orientation"] == 8 : 
                 image=image.rotate(90, expand=True)
 
-    image.convert('RGB').save(filePath, format="JPEG")
+    image.convert('RGB');
+    new_width = 400
+    percent = (new_width/float(image.size[0]))
+    new_height = int((float(image.size[1])*float(percent)))
+    image = image.resize((new_width,new_height), Image.ANTIALIAS)
+    image.save(filePath, format="JPEG")
 
 
 app = Flask(__name__, static_url_path='/assets', static_folder='web_app/assets', template_folder='web_app/templates')
