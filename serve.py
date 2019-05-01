@@ -28,6 +28,7 @@ def normalizeImage(filePath):
 
 app = Flask(__name__, static_url_path='/assets', static_folder='web_app/assets', template_folder='web_app/templates')
 app.config['TEMPLATES_AUTO_RELOAD'] = True
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 class LavaLampViewModel:
     base64Image = ""
