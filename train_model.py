@@ -9,7 +9,7 @@ import numpy as np
 
 from functions import *
 
-MODEL_FILENAME = 'lavalamp_model.h5'
+MODEL_FILENAME = 'lavalamp_model_current.h5'
 IMAGE_SIZE = 300
 
 setTensorFlowSession()
