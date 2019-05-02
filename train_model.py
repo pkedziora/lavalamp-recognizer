@@ -4,9 +4,12 @@ from keras import models
 from keras import optimizers
 from keras.preprocessing.image import ImageDataGenerator
 from keras.callbacks import ModelCheckpoint
+from sklearn.utils import class_weight
+import numpy as np
+
 from functions import *
 
-MODEL_FILENAME = 'lavalamp_model_currrent2.h5'
+MODEL_FILENAME = 'lavalamp_model.h5'
 IMAGE_SIZE = 300
 
 setTensorFlowSession()
@@ -59,6 +62,10 @@ validation_generator = validation_imagegenerator.flow_from_directory(
 checkpoint = ModelCheckpoint(MODEL_FILENAME, monitor='val_acc', verbose=1, save_best_only=True, save_weights_only=False, mode='max')
 callbacks_list = [checkpoint]
 
+class_weights = class_weight.compute_class_weight('balanced',
+                                                 np.unique(train_generator.classes),
+                                                 train_generator.classes)
+
 #train model
 history = model.fit_generator(
       train_generator,
@@ -67,7 +74,7 @@ history = model.fit_generator(
       validation_data=validation_generator,
       validation_steps=320,
       callbacks=callbacks_list,
-      class_weight = {0:1, 1:3},
+      class_weight = class_weights,
       workers=8)
 
 #test model
