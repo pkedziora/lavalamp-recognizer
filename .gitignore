@@ -3,7 +3,8 @@ state*.json
 /data/
 /search_images/download
 *.h5
-.vscode
+.vscode/
+.idea/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

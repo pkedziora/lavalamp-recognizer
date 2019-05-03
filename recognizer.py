@@ -1,4 +1,3 @@
-from keras import models
 from keras.models import load_model
 from keras.preprocessing import image
 import numpy as np
@@ -9,12 +8,13 @@ IMAGE_SIZE = 300
 LOCAL_MODEL = "lavalamp_model.h5"
 REMOTE_MODEL = "https://s3-eu-west-1.amazonaws.com/lavalamp-recognizer/lavalamp_model.h5"
 
-tfTools.setTensorFlowSession()
+tfTools.set_tensorflow_session()
 tfTools.download_model_if_required(REMOTE_MODEL, LOCAL_MODEL)
 
 model = load_model(LOCAL_MODEL)
 global graph
 graph = tf.get_default_graph() 
+
 
 def recognize(img_path):
     print(f"IMAGE  PATH: {img_path}")

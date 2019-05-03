@@ -11,7 +11,7 @@ import tensorflow_tools as tfTools
 MODEL_FILENAME = 'lavalamp_model_current.h5'
 IMAGE_SIZE = 300
 
-tfTools.setTensorFlowSession()
+tfTools.set_tensorflow_session()
 conv_base = VGG16(weights='imagenet',
                   include_top=False,
                   input_shape=(IMAGE_SIZE, IMAGE_SIZE, 3))
