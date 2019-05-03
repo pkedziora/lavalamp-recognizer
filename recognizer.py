@@ -5,10 +5,14 @@ import numpy as np
 import tensorflow_tools as tfTools
 import tensorflow as tf
 
-tfTools.setTensorFlowSession()
 IMAGE_SIZE = 300
+LOCAL_MODEL = "lavalamp_model.h5"
+REMOTE_MODEL = "https://s3-eu-west-1.amazonaws.com/lavalamp-recognizer/lavalamp_model.h5"
 
-model = load_model('lavalamp_model.h5')
+tfTools.setTensorFlowSession()
+tfTools.download_model_if_required(REMOTE_MODEL, LOCAL_MODEL)
+
+model = load_model(LOCAL_MODEL)
 global graph
 graph = tf.get_default_graph() 
 
@@ -22,3 +26,4 @@ def recognize(img_path):
         result = model.predict(img_tensor);
 
     return np.asscalar(result[0][0])
+
