@@ -45,7 +45,7 @@ def is_image_broken(file_path):
 
 
 def is_supported_extension(file_extension):
-    extension_whitelist = ['.jpg', '.jpeg'];
+    extension_whitelist = ['.jpg', '.jpeg']
     return file_extension.lower() in extension_whitelist
 
 
@@ -54,7 +54,7 @@ def get_search_results(query, offset, count):
     headers = {"Ocp-Apim-Subscription-Key": apiKey}
     search = requests.get(API_URL, headers=headers, params=params)
     bing_results = search.json()
-    print(f"{timestamp()} Called Bing api with term: {query} offset: {offset}, returned {len(bing_results['value'])} results");
+    print(f"{timestamp()} Called Bing api with term: {query} offset: {offset}, returned {len(bing_results['value'])} results")
     print(f"{timestamp()} Estimated matches: {bing_results['totalEstimatedMatches']}")
     return bing_results
 
@@ -104,8 +104,7 @@ def download_images(current_term, results_limit):
     current_file_number, visited_urls = load_state(STATE_FILE)
     while (current_offset + current_count) < results_limit:
         bing_results = get_search_results(current_term, current_offset, PAGE_SIZE)
-        results_limit = bing_results["totalEstimatedMatches"] if results_limit > bing_results[
-            "totalEstimatedMatches"] else results_limit;
+        results_limit = bing_results["totalEstimatedMatches"] if results_limit > bing_results["totalEstimatedMatches"] else results_limit
 
         for bingResult in bing_results["value"]:
             image_url = bingResult["contentUrl"]
