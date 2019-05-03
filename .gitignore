@@ -1,6 +1,6 @@
 api_keys/
 state*.json
-data/
+/data/
 *.h5
 
 # Byte-compiled / optimized / DLL files
