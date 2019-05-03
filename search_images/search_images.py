@@ -14,7 +14,7 @@ args = parser.parse_args()
 
 term = urllib.parse.quote_plus(args.term)
 includeRelatedTerms = bool(args.includeRelated)
-outputPath = "data/temp"
+outputPath = "download"
 resultsLimit = int(args.count)
 
 
