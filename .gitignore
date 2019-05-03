@@ -1,6 +1,7 @@
 api_keys/
 state*.json
 /data/
+/search_images/download
 *.h5
 .vscode
 
