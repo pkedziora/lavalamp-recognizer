@@ -4,9 +4,9 @@ import recognizer
 import image_tools as imgTools
 import os
 
-app = Flask(__name__, static_url_path='/assets', static_folder='web_app/assets', template_folder='web_app/templates')
-app.config['TEMPLATES_AUTO_RELOAD'] = True
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+application = Flask(__name__, static_url_path='/assets', static_folder='web_app/assets', template_folder='web_app/templates')
+application.config['TEMPLATES_AUTO_RELOAD'] = True
+application.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 class LavaLampViewModel:
     base64Image = ""
@@ -18,7 +18,7 @@ class LavaLampViewModel:
         self.probability = probability
         self.islavalamp = round(probability) == 1
 
-@app.route("/", methods = ['POST', 'GET'])
+@application.route("/", methods = ['POST', 'GET'])
 def hello():
     filePath = ""
     model = LavaLampViewModel()
@@ -34,4 +34,4 @@ def hello():
     return render_template("index.html", model = model)
  
 if __name__ == "__main__":
-    app.run(host= '0.0.0.0', debug = False)
+    application.run(host= '0.0.0.0', debug = False)
