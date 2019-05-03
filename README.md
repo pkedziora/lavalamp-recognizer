@@ -16,7 +16,7 @@
 
 * To train new model
     * Note: It is recommended to configure tensorflow NVIDIA GPU support for your platform first
-    * Add images to /data folder (train, validation and test images, with 2 categories each: lavalamp, another)
+    * Add images to /data folder (train, validation and test images, with 2 categories each: lavalamps, another)
     * Modify train_model.py batch_size, steps_per_epoch and epochs as required
     * python3 train_model.py
     * Model will be saved to lavalamp_model_current.h5
