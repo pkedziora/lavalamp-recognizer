@@ -5,6 +5,7 @@
 
 * To run lavalamp recognizer web app without training new model (trained model will be downloaded on first run from aws s3)
     * python3 application.py
+    * Go to http://0.0.0.0:5000/
 
 * To download training images using bing search api
     * Add api key for bing search in search_images/api_keys/bing_search.txt
