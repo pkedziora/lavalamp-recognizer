@@ -6,13 +6,12 @@ from keras.preprocessing.image import ImageDataGenerator
 from keras.callbacks import ModelCheckpoint
 from sklearn.utils import class_weight
 import numpy as np
-
-from functions import *
+import tensorflow_tools as tfTools
 
 MODEL_FILENAME = 'lavalamp_model_current.h5'
 IMAGE_SIZE = 300
 
-setTensorFlowSession()
+tfTools.setTensorFlowSession()
 conv_base = VGG16(weights='imagenet',
                   include_top=False,
                   input_shape=(IMAGE_SIZE, IMAGE_SIZE, 3))

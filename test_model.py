@@ -2,11 +2,11 @@ from keras.preprocessing.image import ImageDataGenerator
 from keras import models
 from keras.models import load_model
 import numpy as np
-from functions import *
+from tensorflow_tools import tfTools
 
 IMAGE_SIZE=300
 
-setTensorFlowSession()
+tfTools.setTensorFlowSession()
 model = load_model('lavalamp_model.h5')
 
 test_dir = 'data/test'

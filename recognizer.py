@@ -2,9 +2,10 @@ from keras import models
 from keras.models import load_model
 from keras.preprocessing import image
 import numpy as np
-from functions import *
+import tensorflow_tools as tfTools
+import tensorflow as tf
 
-setTensorFlowSession()
+tfTools.setTensorFlowSession()
 IMAGE_SIZE = 300
 
 model = load_model('lavalamp_model.h5')
