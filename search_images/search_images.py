@@ -25,8 +25,8 @@ STATE_FILE = "state.json"
 
 
 def bing_api_key():
-    keyFile = open(API_KEY_PATH, "r")
-    return keyFile.read()
+    key_file = open(API_KEY_PATH, "r")
+    return key_file.read()
 
 
 apiKey = bing_api_key()
@@ -124,8 +124,8 @@ def download_images(current_term, results_limit):
         save_state(STATE_FILE, current_file_number, visited_urls)
 
 
-def get_related_search_terms(term):
-    bing_results = get_search_results(term, 0, 0)
+def get_related_search_terms(search_term):
+    bing_results = get_search_results(search_term, 0, 0)
     return list(map(lambda q: urllib.parse.quote_plus(q["text"]).lower(), bing_results["queryExpansions"]))
 
 

@@ -23,5 +23,5 @@ def download_model_if_required(url, local_path):
         total_length = int(r.headers.get('content-length'))
         for chunk in progress.bar(r.iter_content(chunk_size=1024), expected_size=(total_length/1024) + 1): 
             if chunk:
-                    f.write(chunk)
-                    f.flush()
+                f.write(chunk)
+                f.flush()
