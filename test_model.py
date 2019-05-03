@@ -2,7 +2,7 @@ from keras.preprocessing.image import ImageDataGenerator
 from keras import models
 from keras.models import load_model
 import numpy as np
-from tensorflow_tools import tfTools
+import tensorflow_tools as tfTools
 
 IMAGE_SIZE=300
 
