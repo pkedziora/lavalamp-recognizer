@@ -48,3 +48,8 @@ h1 {
 .buttonContainer {
     text-align: center;
 }
+
+.thumbnail {
+    max-height:300px;
+    max-width: 100%;
+}

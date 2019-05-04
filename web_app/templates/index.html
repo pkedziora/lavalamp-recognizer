@@ -13,7 +13,7 @@
         </form>
         {% if request.method == 'POST' %}
             <p>
-                <img style="max-height:300px; max-width: 100%" src="{{model.base64Image}}" />
+                <img class="thumbnail" src="{{model.base64Image}}" />
             </p>
             <div class="answer">{{'Yes' if model.islavalamp else 'No'}}!</div>
             <div class="stats">
