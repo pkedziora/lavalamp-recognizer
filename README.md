@@ -15,7 +15,7 @@
     * Move downloaded images to data folder into appropriate catagory
 
 * To train new model
-    * Note: It is recommended to configure Tensorflow NVIDIA GPU support for your platform first
+    * **Note: It is recommended to configure Tensorflow NVIDIA GPU support for your platform first**
     * Add images to /data folder (train, validation and test images, with 2 categories each: lavalamps, another)
     * Modify train_model.py batch_size, steps_per_epoch and epochs as required
     * python3 train_model.py
