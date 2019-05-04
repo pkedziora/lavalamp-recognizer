@@ -6,6 +6,14 @@ from PIL import Image
 from time import gmtime, strftime
 import argparse
 
+
+API_KEY_PATH = "api_keys/bing_search.txt"
+IMAGE_TIMEOUT = 10
+PAGE_SIZE = 200
+STATE_FILE = "state.json"
+OUTPUT_DIR = "download"
+API_URL = "https://api.cognitive.microsoft.com/bing/v7.0/images/search"
+
 parser = argparse.ArgumentParser()
 parser.add_argument("term", help="Image search term")
 parser.add_argument("count", help="Maximum number of results to return")
@@ -14,14 +22,7 @@ args = parser.parse_args()
 
 term = urllib.parse.quote_plus(args.term)
 includeRelatedTerms = bool(args.includeRelated)
-outputPath = "download"
 resultsLimit = int(args.count)
-
-API_URL = "https://api.cognitive.microsoft.com/bing/v7.0/images/search"
-API_KEY_PATH = "api_keys/bing_search.txt"
-IMAGE_TIMEOUT = 10
-PAGE_SIZE = 200
-STATE_FILE = "state.json"
 
 
 def bing_api_key():
@@ -66,7 +67,7 @@ def get_image(url, file_name):
     if not is_supported_extension(extension):
         print(f"{timestamp()} ERROR Image not in extension whitelist, skipped {url} ")
         return False
-    file_path = os.path.sep.join([outputPath, f"{file_name}{extension}"])
+    file_path = os.path.sep.join([OUTPUT_DIR, f"{file_name}{extension}"])
     image_file = open(file_path, "wb")
     image_file.write(image_req.content)
     image_file.close()
