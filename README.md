@@ -1,6 +1,10 @@
 # Lava lamp recognizer
 Is it a lava lamp? Image binary classification with Keras and Tensorflow
-## [Live demo](http://lavalamprecognizer-env-1.xbishrpcxy.eu-west-1.elasticbeanstalk.com/)
+
+## Online Playground
+[https://lavalamp.kedziora.dev/](https://lavalamp.kedziora.dev/)
+
+## How-to
 * To install dependencies
     * pip3 install -r requirements.txt
 
