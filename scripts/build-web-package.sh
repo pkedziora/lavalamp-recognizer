@@ -1,0 +1,1 @@
+zip lavalamp_web.zip * -r -x ./search_images/\* ./data\* ./README.md ./.travis.yml ./test_model.py ./train_model.py ./cmd.py
