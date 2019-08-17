@@ -14,5 +14,6 @@ deploy:
   env: LavalampRecognizer-env-1
   skip_cleanup: true
   zip_file: lavalamp_web.zip
+  bucket_path: elasticbeanstalk-eu-west-1-970527678274
   on:
     repo: pkedziora/lavalamp-recognizer
