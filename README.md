@@ -1,4 +1,4 @@
-# Lava lamp recognizer
+# Lava lamp recognizer [![Build Status](https://travis-ci.org/pkedziora/lavalamp-recognizer.svg?branch=master)](https://travis-ci.org/pkedziora/lavalamp-recognizer)
 Is it a lava lamp? Image binary classification with Keras and Tensorflow
 
 ## Online Playground
