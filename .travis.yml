@@ -6,14 +6,14 @@ script:
 - "./scripts/build-web-package.sh"
 deploy:
   provider: elasticbeanstalk
-  access_key_id: AKIA6D57VD5BGUOBU6GC
+  access_key_id: AKIAVQZTVZS35D2ES3LE
   secret_access_key:
-    secure: EehTx4r9VT7J/dCrVtGJIJ52d/OM5erkbHmEnDNVFsaQVEvFvrTefQPdiZ768qJJOPlc3slkUFnuGzG5j1jMeWPI5yLL+gNB2Fy2B+vrZ6LkoAVLmpx1aUQbUKYPPj27SR+J+WXTjnvpw8392HYfo4Iij+TSPIgysa31yewOOq1qcmb/5REnYZCfiB4zGQz2speOZWBPPqsJtTA9VKBKmCmC21Kbxc3lDyQ0sN6chDrARmNNQRmmW3WrQ2jVXi5CehKdnfxFlGBXiYvKWmkAvjrXkMQPGlV3wALAHDv8m1Tn0ulMQ2+m5pD+d6DtqAojEF/rDCWzUFg9PlDG2GxJbzcEQcLetARfjnFa8s75MJ9we37vptJFKAleFU2rqg+H2prr9DXSQcgAi5YHRVPkvgDTcgEK/R5Yr7JCWnB8yS4J34amPD81jOaacoocO5HNdGkc7uIjgiDNWFLXgMwtWnCFS4bQD+99dU/yAnJKEOf1AonYZmEPUw9bgkvi2KRvwOAh8PEV5VeIOK+zJINRjzRNtLqlaBrmYUNsoeMeq3+OpDTCQd/N54cuB0P8/22K0A4Gamo1DZ+R0aJnUFdn7NZQ5ukv8gzmCTZxuR5r2DgWJnJrZCaA2mibOs9ejdQicrLBnoDmw1YMF71WFpuYOl1HjdTP/QU0zReOO/clIoY=
+    secure: UCjtEWo0y2F0l7sQjHLxBhxT6n3QObvDEMCymOM822ZL5oQbGlhAzc98W5hA1XE7FcS52jMUHHCguSq7IGTGXZz0jP34lczKltYiWY4z5qRW57kh0RMLsvRrDujBEW2SP1h+iJ1z++tJeCJ6zpxY6qD6ycWtwI6IFvtnf9l2OrArDRQ6pf8E4B4fwJUCOSjNr0nLZR2gG9tkaqMuCPVdeM/nghgZep3MPLhvzDOkXnw6LkerqV341UGXPjv5H92ARCDOrCjz0Z8YP+ZA8PRWGiTVTUU8cIC1WENz9aV2roLDldndbeorC71X21iGXz9kjnOZ/hAysqtKKFqhvAW7b2byAsCFMLj+RQbrM5/Wmx+JWqPP68J4ouiCdGHohJfsnlgTfhYAnosfrFDeLBrmR+ehcnpJTG10ta6ZYeGb2fry2nRh4i7exMa9DJOAu6AaxZLXkfKa0cNPCcxIqLcr8sYxfCMm1pm8TIk57q/N9lAGPa1S6NcXwwvOM37mtEts3oUP+cUCkGKBuT2pKUPzqTeoIw5Xu4WQp3mRcM7YrS7DkiMLLZui4d9BGXIo6JZw09Q0H6a4h3LVYqv/z5jhM7tzgOQb/rPajAN9MP//ZwC+sVWmiSm2UBRzlnFLXOSrLU3Zt02qocAtAGTP9sKkL2Ruy0h8GqysX4whGo1DDhU=
   region: eu-west-1
   app: lavalamp-recognizer
-  env: LavalampRecognizer-env-1
   skip_cleanup: true
   zip_file: lavalamp_web.zip
-  bucket_name: elasticbeanstalk-eu-west-1-970527678274
   on:
-    repo: pkedziora/lavalamp-recognizer
+    repo: pkedziora/lavalamp-recognizer  
+  bucket_name: elasticbeanstalk-eu-west-1-379676118199
+  env: LavalampRecognizer-env
