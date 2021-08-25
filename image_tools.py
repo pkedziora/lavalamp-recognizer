@@ -2,8 +2,8 @@ from PIL import Image, ExifTags
 import base64
 
 
-def get_base64_image(file_path):
-    prefix = "data:image/jpeg;charset=utf-8;base64,"
+def get_base64_image(file_path, content_type):
+    prefix = f"data:{content_type};charset=utf-8;base64,"
     with open(file_path, "rb") as imageFile:
         encoded_string = base64.b64encode(imageFile.read()).decode("utf-8")
     return f"{prefix}{encoded_string}"
@@ -26,5 +26,5 @@ def normalize_image(file_path):
     percent = (new_width/float(image.size[0]))
     new_height = int((float(image.size[1])*float(percent)))
     image = image.resize((new_width, new_height), Image.ANTIALIAS)
-    image.save(file_path, format="JPEG")
+    image.save(file_path)
 

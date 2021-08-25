@@ -29,7 +29,7 @@ def hello():
         file_path = f"{secure_filename(image_upload.filename)}"
         image_upload.save(file_path)
         image_tools.normalize_image(file_path)
-        base64_img = image_tools.get_base64_image(file_path)
+        base64_img = image_tools.get_base64_image(file_path, image_upload.content_type)
         probability = recognizer.recognize(file_path)
         model = LavaLampViewModel(base64_img, probability)
         os.remove(file_path)
