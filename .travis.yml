@@ -1,6 +1,6 @@
 language: python
 python:
-- '3.6'
+- '3.7'
 script:
 - "./scripts/download-s3-model.sh"
 - "./scripts/build-web-package.sh"
