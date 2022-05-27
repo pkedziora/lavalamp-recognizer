@@ -15,5 +15,5 @@ deploy:
   zip_file: lavalamp_web.zip
   on:
     repo: pkedziora/lavalamp-recognizer
-  bucket_name: elasticbeanstalk-eu-west-1-278205716470
+  bucket_name: elasticbeanstalk-eu-west-2-949335960627
   env: LavalampRecognizer-env
