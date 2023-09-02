@@ -26,5 +26,5 @@ jobs:
         application_name: Lavalamprecognizer
         environment_name: Lavalamprecognizer-env-1
         version_label: 1
-        region: us-west-2
+        region: eu-west-2
         deployment_package: lavalamp_web.zip
