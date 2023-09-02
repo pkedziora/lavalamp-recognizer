@@ -1,1 +1,1 @@
-wget https://s3-eu-west-2.amazonaws.com/lavalamp-recognizer/lavalamp_model.h5
+wget https://s3-eu-west-2.amazonaws.com/lavalamp-recognizer-model/lavalamp_model.h5
